@@ -1,0 +1,45 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter(getValue($event))" placeholder="Filter">
+  </mat-form-field>
+</div>
+<div class="example-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="seqUser">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="seqUser"> Seq User </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.seqUser}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="countryCode">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="countryCode"> Country Code </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.countryCode}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="termsVersion">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="termsVersion"> Terms Version </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.termsVersion['year']}}/{{row.termsVersion['monthOfYear']}}/{{row.termsVersion['day']}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="kyc">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="kyc"> kyc </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.kyc}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="numberOfFlags">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="numberOfFlags"> Number Of Flags </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.numberOfFlags}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fraudster">
+      <mat-header-cell *matHeaderCellDef > fraudster </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.fraudster}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-button >
+          <mat-icon (click)="checkOneUser(row.seqUser)" aria-hidden="false" aria-label="Example home icon">remove_red_eye</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumnsX"></mat-header-row>
+    <mat-row [ngClass]="{'make-red': row.fraudster == true}" *matRowDef="let row; columns: displayedColumnsX;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

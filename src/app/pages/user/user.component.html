@@ -1,0 +1,128 @@
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile>
+
+    <mat-card class="example-card" style="background: #86f8b9;">
+      <mat-card-title style="width: 300px ;text-align: center;">Flag</mat-card-title>
+      <mat-card-content>
+        <button (click)="flagUserButtonOnClick()" style="width: 300px ;" mat-raised-button color="warn">Flag</button>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+  <mat-grid-tile  [colspan]="3" [rowspan]="2">
+
+    <mat-card style="height: 200px;  max-height: 199px;">
+      <mat-card-title style="width: 1000px">General Info</mat-card-title>
+      <mat-card-content>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <mat-card style="background: lightblue;">
+                <mat-card-title>{{userNumberOfTransactions}}</mat-card-title>
+                <mat-card-subtitle>Transactions</mat-card-subtitle>
+              </mat-card>
+            </div>
+            <div class="col-sm">
+              <mat-card style="background: lightblue;">
+                <mat-card-title>{{userCountryCode}}</mat-card-title>
+                <mat-card-subtitle>Country Code</mat-card-subtitle>
+              </mat-card>
+            </div>
+            <div class="col-sm">
+              <mat-card style="background: lightblue;">
+                <mat-card-title>{{userNumberOfFlags}}</mat-card-title>
+                <mat-card-subtitle>Nb Flags</mat-card-subtitle>
+              </mat-card>
+            </div>
+            <div class="col-sm">
+              <mat-card style="background: lightblue;">
+                <mat-card-title>{{userHasEmail}}</mat-card-title>
+                <mat-card-subtitle>Verified</mat-card-subtitle>
+              </mat-card>
+            </div>
+            <div class="col-sm">
+              <mat-card  [ngStyle]="{'background-color': !userIsFraudster? '#86f8b9' : '#f44336'}" >
+                <mat-card-title>{{userIsFraudster}}</mat-card-title>
+                <mat-card-subtitle>Is Fraud</mat-card-subtitle>
+              </mat-card>
+            </div>
+            <div class="col-sm">
+              <mat-card style="background: lightblue;">
+                <mat-card-title>{{userKyc}}</mat-card-title>
+                <mat-card-subtitle>Kyc</mat-card-subtitle>
+              </mat-card>
+            </div>
+            <div class="col-sm">
+              <mat-card style="background: lightblue;">
+                <mat-card-title>{{userState}}</mat-card-title>
+                <mat-card-subtitle>State</mat-card-subtitle>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+  <mat-grid-tile >
+
+    <mat-card class="example-card" style="background: #86f8b9;">
+      <mat-card-title style="width: 300px ;text-align: center;">Fraud</mat-card-title>
+      <mat-card-content>
+        <button (click)="unFraudUserButtonOnClick()" *ngIf="userIsFraudster" style="width: 300px ;" mat-raised-button color="primary">UnFraud</button>
+        <button (click)="fraudUserButtonOnClick()" *ngIf="!userIsFraudster" style="width: 300px ;" mat-raised-button color="warn">Fraud</button>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="container" style="margin-top: 25px">
+  <div class="row">
+    <!--    <div class="col">-->
+    <!--      <app-map></app-map>-->
+    <!--    </div>-->
+    <div class="col col-lg-3">
+
+      <mat-card class="">
+        <mat-card-title style="width: 110px ;">source</mat-card-title>
+        <mat-card-content>
+          <canvas #sourceCanvas id="sourceCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+    <div class="col col-lg-3">
+
+      <mat-card >
+        <mat-card-title style="width: 110px ;">entry</mat-card-title>
+        <mat-card-content>
+          <canvas #entryCanvas id="entryCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+    <div class="col col-lg-3">
+
+      <mat-card >
+        <mat-card-title style="width: 110px ;">type</mat-card-title>
+        <mat-card-content>
+          <canvas #typeCanvas id="typeCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+    <div class="col col-lg-3">
+
+      <mat-card >
+        <mat-card-title style="width: 110px ;">state</mat-card-title>
+        <mat-card-content>
+          <canvas #stateCanvas id="stateCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+<br>
+<app-table-transactions></app-table-transactions>

@@ -1,0 +1,114 @@
+<mat-grid-list cols="5" rowHeight="150px" style="height:100vh">
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{numberOfAllTransactions}}</mat-card-title>
+      <mat-card-subtitle>All Transactions</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{numberOfAllFlaggedTransactions}}</mat-card-title>
+      <mat-card-subtitle>Flagged</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{numberOfAllCompletedTransactions}}</mat-card-title>
+      <mat-card-subtitle>Completed</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{numberOfTotalCurrency}}</mat-card-title>
+      <mat-card-subtitle>All Currency</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{numberOfCryptoCurrency}}</mat-card-title>
+      <mat-card-subtitle>Crypto</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="container" style="margin-top: 25px">
+  <div class="row">
+    <div class="col col-lg-3">
+      <mat-card class="example-card">
+        <mat-card-title style="width: 110px ;">source</mat-card-title>
+        <mat-card-content>
+          <canvas #sourceCanvas id="sourceCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col col-lg-3">
+      <mat-card class="example-card">
+        <mat-card-title style="width: 110px ;">entry</mat-card-title>
+        <mat-card-content>
+          <canvas #entryCanvas id="entryCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col col-lg-3">
+      <mat-card class="example-card">
+        <mat-card-title style="width: 110px ;">type</mat-card-title>
+        <mat-card-content>
+          <canvas #typeCanvas id="typeCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col col-lg-3">
+      <mat-card class="example-card">
+        <mat-card-title style="width: 110px ;">state</mat-card-title>
+        <mat-card-content>
+          <canvas #stateCanvas id="stateCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<br>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <div style="height: fit-content;width: fit-content">
+      <div style="text-align: center;">
+        <h2>Map Of Transactions </h2>
+      </div>
+      <app-map></app-map>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div>
+      <div style="text-align: center;">
+        <h2>Map Of Flagged Transactions </h2>
+      </div>
+      <app-map></app-map>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<!--<mat-tab-group mat-align-tabs="center">-->
+<!--  <mat-tab label="Map Transactions">-->
+<!--    <div class="container">-->
+<!--      <app-map></app-map>-->
+<!--    </div>-->
+<!--  </mat-tab>-->
+<!--  <mat-tab label="Map Flagged Transactions">-->
+<!--    <app-map></app-map>-->
+<!--  </mat-tab>-->
+<!--</mat-tab-group>-->

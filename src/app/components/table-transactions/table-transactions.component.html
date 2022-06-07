@@ -1,0 +1,81 @@
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="currency">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="countryCode"> currency </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.currency}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="amount"> amount </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.amount}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="state">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="state"> state </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.state}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="createdDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="createdDate"> Creation </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.createdDate[0]}}/{{row.createdDate[1]}}/{{row.createdDate[2]}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="merchantCategory">
+      <mat-header-cell *matHeaderCellDef > Category </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.merchantCategory}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="merchantCountry">
+      <mat-header-cell *matHeaderCellDef > Country </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.merchantCountry}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="entryMethod">
+      <mat-header-cell *matHeaderCellDef > Method </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.entryMethod}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef > Type </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.type}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="source">
+      <mat-header-cell *matHeaderCellDef > Source </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.source}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="flaged" >
+      <mat-header-cell *matHeaderCellDef > Flaged </mat-header-cell>
+      <mat-cell *matCellDef="let row" > {{row.flaged}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-button >
+          <mat-icon (click)="flagTransactionOnClick(row.transactionId)" aria-hidden="false" aria-label="Example home icon">remove_red_eye</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumnsX"></mat-header-row>
+    <mat-row [ngClass]="{'make-red': row.flaged == true}" *matRowDef="let row; columns: displayedColumnsX;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

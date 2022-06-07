@@ -1,0 +1,159 @@
+<mat-grid-list cols="5" rowHeight="150px" style="height:100vh">
+  <mat-grid-tile >
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{allUsers}}</mat-card-title>
+      <mat-card-subtitle>All Users</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile >
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{allFraudsters}}</mat-card-title>
+      <mat-card-subtitle>Fraudsters</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{allVerified}}</mat-card-title>
+      <mat-card-subtitle>Verified</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{totalFlags}}</mat-card-title>
+      <mat-card-subtitle>To.Flags</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-title style="width: 200px ;">{{numberOfNonFlaged}}</mat-card-title>
+      <mat-card-subtitle>Not Flaged</mat-card-subtitle>
+      <mat-card-actions align="end">
+        <button mat-button>more</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <mat-card >
+        <mat-card-content >
+          <div class="d-flex justify-content-between">
+            <h2 class="example-h2" style="width: 250px ;">Fraudsters</h2>
+            <h3 class="example-h2"style="width: 20px;">{{percentageOfNumberOfFraudsters}}%</h3>
+          </div>
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              color="warn"
+              [value]="percentageOfNumberOfFraudsters"
+              [bufferValue]="bufferValue">
+            </mat-progress-bar>
+          </section>
+          <br>
+          <div class="d-flex justify-content-between">
+            <h2 class="example-h2" style="width: 250px ;">Non Fraudsters</h2>
+            <h3 class="example-h2" style="width: 20px;">{{percentageOfNumberOfNonFraudsters}}%</h3>
+          </div>
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              color="accent"
+              [value]="percentageOfNumberOfNonFraudsters"
+              [bufferValue]="bufferValue">
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-6">
+      <mat-card >
+        <mat-card-content >
+          <div class="d-flex justify-content-between">
+            <h2 class="example-h2" style="width: 250px ;">Non Flaged</h2>
+            <h3 class="example-h2" style="width: 20px;">{{percentageOfNonFlaged}}%</h3>
+          </div>
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              color="accent"
+              [value]="percentageOfNonFlaged"
+              [bufferValue]="bufferValue">
+            </mat-progress-bar>
+          </section>
+          <br>
+          <div class="d-flex justify-content-between">
+            <h2 class="example-h2" style="width: 250px ;">Of Flagged</h2>
+            <h3 class="example-h2" style="width: 20px;">{{percentageOfFlaged}}%</h3>
+          </div>
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              color="warn"
+              [value]="percentageOfFlaged"
+              [bufferValue]="bufferValue">
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 25px">
+  <div class="row">
+    <div class="col">
+      <app-map></app-map>
+    </div>
+    <div class="col col-lg-3">
+
+      <mat-card class="example-card">
+        <mat-card-title style="width: 100px ;">Users KYC</mat-card-title>
+        <mat-card-subtitle>Know Your Customer</mat-card-subtitle>
+        <mat-card-content>
+          <canvas #pieCanvas id="pieCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+
+
+    </div>
+    <div class="col col-lg-3">
+
+      <mat-card class="example-card">
+        <mat-card-title style="width: 100px ;">Users States</mat-card-title>
+        <mat-card-subtitle>Not Flagged</mat-card-subtitle>
+        <mat-card-content>
+          <canvas #doughnutCanvas id="doughnutCanvas" style="height:50%; width:50%"></canvas>
+        </mat-card-content>
+      </mat-card>
+
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col col-lg-4">
+      <div id="optionHalfPie"></div>
+    </div>
+    <div class="col col-lg-5">
+    </div>
+  </div>
+</div>
+<h2>List Of All Users</h2>
+<app-table></app-table>
